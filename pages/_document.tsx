@@ -4,8 +4,8 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 import theme from '../src/theme/theme';
 
 //for material ui minify
-let prefixer;
-let cleanCSS;
+let prefixer:any;
+let cleanCSS:any;
 if (process.env.NODE_ENV === 'production') {
   /* eslint-disable global-require */
   const postcss = require('postcss');
@@ -28,8 +28,8 @@ export default class MyDocument extends Document {
         </Head>
 
         <body>
-            <Main />
-            <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );
@@ -82,7 +82,7 @@ MyDocument.getInitialProps = async (ctx) => {
   let css = sheets.toString();
   // It might be undefined, e.g. after an error.
   if (css && process.env.NODE_ENV === 'production') {
-    const result1 = await prefixer.process(css, { from: undefined });
+    const result1 = await prefixer.process(css, {from: undefined });
     css = result1.css;
     css = cleanCSS.minify(css).styles;
   }
@@ -99,6 +99,5 @@ MyDocument.getInitialProps = async (ctx) => {
       />,
     ],
   };
-
 
 };

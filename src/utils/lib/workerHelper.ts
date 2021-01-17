@@ -1,4 +1,4 @@
-export const getValue = async (value)=>{
+export const getValue = async (value:any)=>{
   if (Number.isInteger(Number(value)) && Number(value) > 0){
     return calculatePrime(Number(value));
   }else {
@@ -6,7 +6,7 @@ export const getValue = async (value)=>{
   }
 };
 
-const calculatePrime = (value)=>{
+const calculatePrime = (value:number)=>{
   let prime = 1;
   let testNumber = 0;
   let numberOfPrimes = 0;
@@ -26,7 +26,7 @@ const calculatePrime = (value)=>{
   return prime;
 };
 
-const isPrimeNumber = (value)=>{
+const isPrimeNumber = (value:number)=>{
   if (value <= 1){
     return false
   }

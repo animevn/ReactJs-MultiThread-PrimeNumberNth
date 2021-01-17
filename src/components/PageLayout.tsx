@@ -27,7 +27,12 @@ const useStyle = makeStyles(theme=>({
 
 }));
 
-export default function PageLayout(props) {
+interface PageLayoutProps {
+  children:React.ReactNode,
+  headTitle:string
+}
+
+export default function PageLayout(props:PageLayoutProps) {
 
   const classes = useStyle();
   const {headTitle, children} = props;
@@ -58,5 +63,6 @@ export default function PageLayout(props) {
 
     </>
   )
+
 
 }

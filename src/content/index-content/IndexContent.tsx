@@ -1,10 +1,10 @@
 import React, {useContext, useState} from "react";
 import {Box, Typography, Button, TextField} from "@material-ui/core";
-import {ShareContext} from "../../utils/ShareContext";
+import {ShareContext} from "../../context/ShareContext";
 
 export default function IndexContent() {
 
-  const {prime1, setPrime1, prime2, setPrime2} = useContext(ShareContext);
+  const {prime1, prime2} = useContext(ShareContext);
   const {value1, setValue1, value2, setValue2} = useContext(ShareContext);
   const {onCalculateOne, onCalculateTwo} = useContext(ShareContext);
 
@@ -13,19 +13,16 @@ export default function IndexContent() {
   const textStyle = {
     fontWeight:300,
     lineHeight:"1.8",
-    textAlign:"justify",
     marginTop:"1rem"
   };
 
-  const onNumberOneChanged = (event)=>{
-    setValue1(event.target.value);
+  const onNumberOneChanged = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    setValue1 && setValue1(event.target.value);
   };
 
-  const onNumberTwoChanged = (event)=>{
-    setValue2(event.target.value);
+  const onNumberTwoChanged = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    setValue2 && setValue2(event.target.value);
   };
-
-
 
   const onTestClick = ()=>{
     setTest(prev=>++prev);

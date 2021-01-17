@@ -8,8 +8,10 @@ export default function NavBarMenu() {
 
   const [state, setState] = useState(false);
 
-  const toggleDrawer = (value) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+  const toggleDrawer = (value:boolean) => (event:React.KeyboardEvent | React.MouseEvent) => {
+    if (event && event.type === 'keydown' && (
+      (event as React.KeyboardEvent).key === 'Tab' ||
+      (event as React.KeyboardEvent).key === 'Shift')) {
       return;
     }
     setState(value);

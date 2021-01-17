@@ -1,10 +1,13 @@
 import React from "react";
-import {Box, AppBar, Slide} from "@material-ui/core";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger/useScrollTrigger";
+import {Box, useScrollTrigger, AppBar, Slide} from "@material-ui/core";
 import HeaderWide from "./HeaderWide";
 import HeaderMobile from "./HeaderMobile";
 
-export default function Header(props) {
+interface HeaderProps {
+  trigger?:boolean
+}
+
+export default function Header(props:HeaderProps) {
 
   const triggerScrollToTop = useScrollTrigger({
     disableHysteresis: true,
@@ -12,10 +15,8 @@ export default function Header(props) {
   });
 
   const appBarStyle = {
-    backgroundColor:"white",
+    backgroundColor:"orange",
   };
-
-  const margin = {xs:0, sm:1, md:2, lg:4, xl:4};
 
   return (
     <Slide appear={false} direction="down" in={!props.trigger}>
@@ -23,11 +24,10 @@ export default function Header(props) {
         id="appbar"
         style={appBarStyle}
         component={Box}
-        px={margin}
         elevation={triggerScrollToTop ? 1 : 0}
       >
-        <HeaderWide/>
         <HeaderMobile/>
+        <HeaderWide/>
       </AppBar>
     </Slide>
   )

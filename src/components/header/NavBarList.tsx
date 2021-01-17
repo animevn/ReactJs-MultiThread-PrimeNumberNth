@@ -1,12 +1,16 @@
 import React from "react";
 import {useRouter} from "next/router";
-
 import {
   Box, Accordion, AccordionSummary, AccordionDetails, ListItem, ListItemText
 } from "@material-ui/core";
-import {ExpandMore} from '@material-ui/icons';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-export default function NavBarList(props){
+interface NavBarListProps {
+  onMenuClick:()=>void,
+  onAboutClick?:()=>void
+}
+
+export default function NavBarList(props:NavBarListProps){
 
   const router = useRouter();
 
@@ -34,19 +38,20 @@ export default function NavBarList(props){
 
   const onAboutClick = ()=>{
     props.onMenuClick();
-    router.push("/about");
+    router.push("/about").then();
   };
 
   const onContactClick = ()=>{
     props.onMenuClick();
-    router.push("/contact");
+    router.push("/contact").then();
   };
+
 
   return (
     <>
       <Accordion>
         <Box bgcolor="background.default">
-          <AccordionSummary expandIcon={<ExpandMore/>} style={expandPanelStyle}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon/>} style={expandPanelStyle}>
             About
           </AccordionSummary>
         </Box>
@@ -78,7 +83,7 @@ export default function NavBarList(props){
       <Accordion defaultExpanded>
 
         <Box bgcolor="background.default">
-          <AccordionSummary expandIcon={<ExpandMore/>} style={expandPanelStyle}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon/>} style={expandPanelStyle}>
             Contact
           </AccordionSummary>
         </Box>

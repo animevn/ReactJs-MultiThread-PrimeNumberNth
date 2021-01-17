@@ -5,7 +5,7 @@ import PageLayout from "../src/components/PageLayout";
 export default function Home() {
 
   return (
-    <PageLayout headTitle="Contact">
+    <PageLayout headTitle="Home">
       <IndexContent/>
     </PageLayout>
   )
